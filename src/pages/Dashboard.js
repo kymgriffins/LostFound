@@ -104,7 +104,7 @@ function DashboardContent() {
               pr: '24px', // keep right padding when drawer closed
             }}
           >
-            {/* <IconButton
+            <IconButton
               edge="start"
               color="inherit"
               aria-label="open drawer"
@@ -114,8 +114,8 @@ function DashboardContent() {
                 ...(open && { display: 'none' }),
               }}
             >
-              <MenuIcon />
-            </IconButton> */}
+              {/* <MenuIcon /> */}
+            </IconButton>
             <Typography
               component="h1"
               variant="h6"

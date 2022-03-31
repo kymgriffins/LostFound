@@ -30,7 +30,7 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp() {
-    /* const {signupUser} = useContext(AuthContext) */
+  
     const [username,setUsername]= useState("")
     const [password,setPassword] = useState("")
     const [password2,setPassword2]= useState("")
