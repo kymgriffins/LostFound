@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useContext } from "react";
-/* import AuthContext from "../context/AuthContext"; */
+import AuthContext from "../context/AuthContext";
 import _ from "lodash";
 import Link from "@mui/material/Link";
 import Table from "@mui/material/Table";
@@ -8,7 +8,7 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-// import Title from './Title';
+import Title from './Title';
 
 // Generate Order Data
 function createData(id, date, name, shipTo, paymentMethod, amount) {
@@ -33,7 +33,7 @@ function preventDefault(event) {
 export default function MyItems() {
   let [items, setItems] = useState([]);
   let [userItem, setUserItem] = useState([]);
- /*  let { authTokens, logoutUser, user } = useContext(AuthContext); */
+  let { authTokens, logoutUser, user } = useContext(AuthContext);
 
   /* console.log("AllItems", items);
   console.log("UserItems", userItem);
@@ -41,30 +41,30 @@ export default function MyItems() {
   const getItems = async () => {
     let response = await fetch("https://lostandfoundwebapp.herokuapp.com/app/all/", {
       method: "GET",
-     /*  headers: {
+      headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + String(authTokens.access),
-      }, */
+      },
     });
     let data = await response.json();
 
     if (response.status === 200) {
       setItems(data);
     } else if (response.statusText === "Unauthorized") {
-    /*   logoutUser(); */
+      logoutUser();
     }
   };
- /*  const getUserItems = async () => {
+  const getUserItems = async () => {
     const _userItem = _.filter(items, (item) => item.user === user.user_id);
     setUserItem(_userItem);
-  }; */
+  };
   useEffect(() => {
     getItems();
-   /*  getUserItems(); */
-  }, [getItems,/*  getUserItems */]);
+    getUserItems();
+  }, [getItems, getUserItems]);
   return (
     <React.Fragment>
-      {/*  <Title>Recent Orders</Title> */}
+       <Title>My Items</Title>
       <Table size="small">
         <TableHead>
           <TableRow>
@@ -102,55 +102,3 @@ export default function MyItems() {
   );
 }
 
-// import React, {useState, useEffect, useContext} from 'react'
-// import AuthContext from '../context/AuthContext'
-// import _ from 'lodash'
-// const HomePage = () => {
-//     let [items, setItems] = useState([])
-//     let [userItem,setUserItem]= useState([])
-//     let {authTokens, logoutUser, user} = useContext(AuthContext)
-
-//    console.log("AllItems",items)
-//    console.log("UserItems", userItem)
-//    console.log("User",user)
-//     const getItems = async() =>{
-//         let response = await fetch('http://127.0.0.1:8000/app/all/', {
-//             method:'GET',
-//             headers:{
-//                 'Content-Type':'application/json',
-//                 'Authorization':'Bearer ' + String(authTokens.access)
-//             }
-//         })
-//         let data = await response.json()
-
-//         if(response.status === 200){
-//             setItems(data)
-
-//         }else if(response.statusText === 'Unauthorized'){
-//             logoutUser()
-//         }
-
-//     }
-//     const getUserItems= async()=>{
-//         const _userItem = _.filter(items, item=> item.user === user.user_id)
-//         setUserItem(_userItem)
-//     }
-//     useEffect(()=> {
-//         getItems()
-//         getUserItems()
-//     }, [])
-
-//     return (
-//         <div>
-//             <p>You are logged to the home page!</p>
-
-//             <ul>
-//                 {userItem.map(item => (
-//                     <li key={item.id} >{item.item_type}</li>
-//                 ))}
-//             </ul>
-//         </div>
-//     )
-// }
-
-// export default HomePage

@@ -8,7 +8,7 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-// import Title from './Title';
+import Title from './Title';
 
 // Generate Order Data
 function createData(id, date, name, shipTo, paymentMethod, amount) {
@@ -32,7 +32,6 @@ function preventDefault(event) {
 
 export default function AllItems() {
   let [items, setItems] = useState([]);
-  let [userItem, setUserItem] = useState([]);
   let { authTokens, logoutUser, user } = useContext(AuthContext);
 
   /* console.log("AllItems", items);
@@ -54,17 +53,14 @@ export default function AllItems() {
       logoutUser();
     }
   };
-  const getUserItems = async () => {
-    const _userItem = _.filter(items, (item) => item.user === user.user_id);
-    setUserItem(_userItem);
-  };
+  
   useEffect(() => {
     getItems();
-    getUserItems();
-  }, [getItems, getUserItems]);
+    
+  }, [getItems]);
   return (
     <React.Fragment>
-      {/*  <Title>Recent Orders</Title> */}
+       <Title>All System Items</Title>
       <Table size="small">
         <TableHead>
           <TableRow>
@@ -81,7 +77,7 @@ export default function AllItems() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {userItem.map((row) => (
+          {items.map((row) => (
             <TableRow key={row.id}>
               <TableCell>{row.id}</TableCell>
               <TableCell>{row.name}</TableCell>

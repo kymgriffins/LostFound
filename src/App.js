@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import SubmitItem from './pages/SubmitItem';
 import Login from './pages/Login'
@@ -15,7 +15,7 @@ function App() {
         <PrivateRoute component={Dashboard} path="/" exact />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
-        <PrivateRoute  path="/submit-item" component={SubmitItem} />
+        <PrivateRoute  path="/submit-items" component={SubmitItem} />
         
 </AuthProvider>
         </Router>

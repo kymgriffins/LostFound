@@ -114,7 +114,7 @@ function DashboardContent() {
                 ...(open && { display: 'none' }),
               }}
             >
-              {/* <MenuIcon /> */}
+              <IconButton />
             </IconButton>
             <Typography
               component="h1"
