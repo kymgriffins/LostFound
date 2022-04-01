@@ -46,7 +46,7 @@ export default function SignUp() {
             first_name: first,
             last_name: last
         }
-        axios.post("http://127.0.0.1:8000/app/register/",
+        axios.post("https://lostandfoundwebapp.herokuapp.com/app/register/",
         signupData
         ) 
 

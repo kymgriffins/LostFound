@@ -25,7 +25,7 @@ import { mainListItems, /* secondaryListItems */ } from './listItems';
 import MyItems from './MyItems';
 import AllItems from './AllItems';
 import LostItems from './LostItems';
-
+import FoundItems from './FoundItems'
 // import SubmitItem from './SubmitItem';
 function Copyright(props) {
   return (
@@ -167,7 +167,12 @@ function DashboardContent() {
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
-             
+            <Grid item xs={12} md={12}>
+                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                  <AllItems />
+                </Paper>
+
+              </Grid>
               <Grid item xs={12} md={12}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
                   <MyItems />
@@ -176,10 +181,11 @@ function DashboardContent() {
               </Grid>
               <Grid item xs={12} md={12}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                  <AllItems />
+                  <FoundItems />
                 </Paper>
 
               </Grid>
+              
               <Grid item xs={12} md={12}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
                   <LostItems />

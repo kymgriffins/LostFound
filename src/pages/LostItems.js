@@ -53,7 +53,7 @@ export default function LostItems() {
     }
   };
   const getLostItems = async () => {
-    const lostItem = _.filter(items, (item) => item.type === "LOST");
+    const lostItem = _.filter(items, (item) => item.item_type === "LOST");
     setLost(lostItem);
   };
   useEffect(() => {

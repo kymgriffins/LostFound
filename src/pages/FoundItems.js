@@ -11,9 +11,7 @@ import TableRow from "@mui/material/TableRow";
 import Title from './Title';
 
 // Generate Order Data
-function createData(id, date, name, shipTo, paymentMethod, amount) {
-  return { id, date, name, shipTo, paymentMethod, amount };
-}
+
 
 const rows = [
   {
@@ -30,9 +28,9 @@ function preventDefault(event) {
   event.preventDefault();
 }
 
-export default function MyItems() {
+export default function FoundItems() {
   let [items, setItems] = useState([]);
-  let [userItem, setUserItem] = useState([]);
+  let [lost, setLost] = useState([]);
   let { authTokens, logoutUser, user } = useContext(AuthContext);
 
   /* console.log("AllItems", items);
@@ -51,20 +49,20 @@ export default function MyItems() {
     if (response.status === 200) {
       setItems(data);
     } else if (response.statusText === "Unauthorized") {
-      logoutUser();
+    /*   logoutUser(); */
     }
   };
-  const getUserItems = async () => {
-    const _userItem = _.filter(items, (item) => item.user === user.user_id );
-    setUserItem(_userItem);
+  const getLostItems = async () => {
+    const lostItem = _.filter(items, (item) => item.item_type === "LOST");
+    setLost(lostItem);
   };
   useEffect(() => {
     getItems();
-    getUserItems();
-  }, [getItems, getUserItems]);
+    getLostItems();
+  }, [getItems, getLostItems]);
   return (
     <React.Fragment>
-       <Title>My Items</Title>
+       <Title>Lost Items</Title>
       <Table size="small">
         <TableHead>
           <TableRow>
@@ -81,7 +79,7 @@ export default function MyItems() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {userItem.map((row) => (
+          {lost.map((row) => (
             <TableRow key={row.id}>
               <TableCell>{row.id}</TableCell>
               <TableCell>{row.name}</TableCell>
@@ -101,4 +99,3 @@ export default function MyItems() {
     </React.Fragment>
   );
 }
-
