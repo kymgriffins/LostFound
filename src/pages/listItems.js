@@ -3,6 +3,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
+import {Link} from 'react-router-dom'
 /* import DashboardIcon from '@mui/icons-material/Dashboard';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PeopleIcon from '@mui/icons-material/People';
@@ -14,23 +15,32 @@ export const mainListItems = (
   <React.Fragment>
    
     <ListItemButton>
-      <ListItemIcon>
-       {/*  <ShoppingCartIcon /> */}
-      </ListItemIcon>
-      <ListItemText primary="My Items" />
+      
+      <Link to="/mine">My Items</Link>
+    
+      <ListItemText/>
     </ListItemButton>
     <ListItemButton>
-      <ListItemIcon>
-       {/*  <ShoppingCartIcon /> */}
-      </ListItemIcon>
-      <ListItemText primary="All  Items" />
+     
+      <Link to="/all">All Items</Link>
+      
     </ListItemButton>
     <ListItemButton>
-      <ListItemIcon>
-       {/*  <ShoppingCartIcon /> */}
-      </ListItemIcon>
-      <ListItemText primary="All Lost Items" />
+    
+      <Link to="/lost">Lost Items</Link>
+      
     </ListItemButton>
+    <ListItemButton>
+     
+      <Link to="/found">Found Items</Link>
+   
+    </ListItemButton>
+    <ListItemButton>
+     
+     <Link to="/submit-items">Submit Item</Link>
+  
+   </ListItemButton>
+    
     
    
    

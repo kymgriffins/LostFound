@@ -9,6 +9,7 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Title from './Title';
+import Dashboard from './Dashboard'
 
 // Generate Order Data
 
@@ -61,6 +62,7 @@ export default function FoundItems() {
     getLostItems();
   }, [getItems, getLostItems]);
   return (
+    <Dashboard>
     <React.Fragment>
        <Title>Lost Items</Title>
       <Table size="small">
@@ -97,5 +99,6 @@ export default function FoundItems() {
       </Table>
       
     </React.Fragment>
+    </Dashboard>
   );
 }

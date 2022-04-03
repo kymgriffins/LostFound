@@ -9,7 +9,7 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Title from './Title';
-
+import Dashboard from './Dashboard'
 // Generate Order Data
 function createData(id, date, name, shipTo, paymentMethod, amount) {
   return { id, date, name, shipTo, paymentMethod, amount };
@@ -63,6 +63,7 @@ export default function MyItems() {
     getUserItems();
   }, [getItems, getUserItems]);
   return (
+    <Dashboard>
     <React.Fragment>
        <Title>My Items</Title>
       <Table size="small">
@@ -99,6 +100,7 @@ export default function MyItems() {
       </Table>
       
     </React.Fragment>
+    </Dashboard>
   );
 }
 

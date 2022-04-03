@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import Container from '@mui/material/Container';
 import React, { useState, useEffect, useContext } from "react";
 import AuthContext from "../context/AuthContext";
 import _ from "lodash";
@@ -9,7 +10,13 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Title from './Title';
-
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import Dashboard from './Dashboard'
+import { IconButton } from '@mui/material';
+import MuiAppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
 // Generate Order Data
 
 
@@ -61,7 +68,12 @@ export default function LostItems() {
     getLostItems();
   }, [getItems, getLostItems]);
   return (
-    <React.Fragment>
+    <Dashboard>
+      <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+            <Grid container spacing={3}>
+            <Grid item xs={12} md={12}>
+                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                <React.Fragment>
        <Title>Lost Items</Title>
       <Table size="small">
         <TableHead>
@@ -74,11 +86,13 @@ export default function LostItems() {
             <TableCell>Location</TableCell>
             <TableCell>Description</TableCell>
             <TableCell>ID No</TableCell>
-            <TableCell>Report</TableCell>
             <TableCell>Date</TableCell>
+
           </TableRow>
         </TableHead>
         <TableBody>
+         
+
           {lost.map((row) => (
             <TableRow key={row.id}>
               <TableCell>{row.id}</TableCell>
@@ -91,11 +105,24 @@ export default function LostItems() {
               <TableCell>{row.id_number}</TableCell>
               <TableCell>{row.report}</TableCell>
               <TableCell>{row.date_added}</TableCell>
+               {/* add a button to the right of the table*/}
+               <IconButton style={{ padding: 8 }}></IconButton>
+
+
             </TableRow>
           ))}
         </TableBody>
       </Table>
       
     </React.Fragment>
+                </Paper>
+
+              </Grid>
+              
+              
+            </Grid>
+            </Container>
+    
+    </Dashboard>
   );
 }

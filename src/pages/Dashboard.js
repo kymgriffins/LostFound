@@ -31,7 +31,7 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
+      <Link color="inherit" href="">
         Your Website
       </Link>{' '}
       {new Date().getFullYear()}
@@ -173,25 +173,8 @@ function DashboardContent() {
                 </Paper>
 
               </Grid>
-              <Grid item xs={12} md={12}>
-                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                  <MyItems />
-                </Paper>
-
-              </Grid>
-              <Grid item xs={12} md={12}>
-                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                  <FoundItems />
-                </Paper>
-
-              </Grid>
               
-              <Grid item xs={12} md={12}>
-                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                  <LostItems />
-                </Paper>
-                
-              </Grid>
+              
             </Grid>
             <Copyright sx={{ pt: 4 }} />
           </Container>

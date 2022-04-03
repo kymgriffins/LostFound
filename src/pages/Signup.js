@@ -14,6 +14,8 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios'
+import jwt_decode from "jwt-decode"
+import { useHistory } from 'react-router-dom'
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -29,7 +31,12 @@ function Copyright(props) {
 
 const theme = createTheme();
 
+
 export default function SignUp() {
+  let [authTokens, setAuthTokens] = useState(()=> localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
+    let [user, setUser] = useState(()=> localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null)
+    let [loading, setLoading] = useState(false)
+
   
     const [username,setUsername]= useState("")
     const [password,setPassword] = useState("")
@@ -37,6 +44,7 @@ export default function SignUp() {
     const [email, setEmail]= useState("")
     const [first, setFirst]=useState("")
     const [last, setLast]=useState("")
+    const history = useHistory()
     const signupUser = async(e)=>{
         const signupData = {
             username: username,
@@ -46,9 +54,15 @@ export default function SignUp() {
             first_name: first,
             last_name: last
         }
-        axios.post("https://lostandfoundwebapp.herokuapp.com/app/register/",
+        const response = axios.post("https://lostandfoundwebapp.herokuapp.com/app/register/",
         signupData
         ) 
+      //   console.log(response)
+      //   if(response.status === 201){
+      //     alert('Your account has been successfully created!')
+      // }else{
+      //     alert('Something went wrong!')
+      // }
 
        
         }

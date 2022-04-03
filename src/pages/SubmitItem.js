@@ -6,9 +6,10 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
+
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
+import {Link} from 'react-router-dom'
 // import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
@@ -19,6 +20,7 @@ import { useState } from "react";
 import axios from "axios";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
+import Dashboard from './Dashboard'
 const theme = createTheme();
 const itemType = [
   {
@@ -65,18 +67,20 @@ export default function SubmitItem() {
       report: "",
        user: user.user_id 
     };
-    axios.post(
+    const response = axios.post(
       "https://lostandfoundwebapp.herokuapp.com/app/post-item/",
       postedItems
     );
+    console.log(response.data);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     postItem();
   };
   return (
+
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="md">
+      <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{
@@ -211,9 +215,11 @@ export default function SubmitItem() {
             >
               Submit
             </Button>
+            <Link to="/">Go home</Link>
           </Box>
         </Box>
       </Container>
     </ThemeProvider>
+
   );
 }
